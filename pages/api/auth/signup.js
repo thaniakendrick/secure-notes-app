@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { insertUser } from '../../../lib/db'; 
+import { insertUser } from '../../../lib/db';
 
 export default async function signup(req, res) {
     if (req.method !== 'POST') {
@@ -35,7 +35,7 @@ export default async function signup(req, res) {
         await insertUser({ username, password: hashedPassword });
         return res.status(201).json({ message: 'User created' });
     } catch (error) {
-        if (error.code === '23505') { // Assuming PostgreSQL and a unique violation on username
+        if (error.code === 'SQLITE_CONSTRAINT') { 
             return res.status(409).json({ message: 'Username already exists' });
         }
         console.error(error);

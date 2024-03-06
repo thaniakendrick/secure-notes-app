@@ -25,7 +25,7 @@ export default function SignupForm() {
       setError('Password must contain at least one lowercase letter, one uppercase letter, and one number.');
       return false;
     }
-    return true; // Inputs are valid
+    return true;
   };
 
   const handleSubmit = async (event) => {
@@ -48,7 +48,7 @@ export default function SignupForm() {
 
       if (!response.ok) throw new Error(await response.text());
 
-      router.push('/login'); // Redirect to login on successful signup
+      router.push('/login'); 
     } catch (error) {
       setError(error.message);
     }

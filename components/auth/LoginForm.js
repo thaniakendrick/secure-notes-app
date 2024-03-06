@@ -10,7 +10,6 @@ export default function LoginForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // React's default behavior already prevents XSS by escaping strings inserted into the DOM.
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
